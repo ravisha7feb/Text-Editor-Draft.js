@@ -8,12 +8,20 @@ class PageContainer extends React.Component {
 			editorState: EditorState.createEmpty() //sets its content to empty
 		};
     }
-    //pass this as prop in editor component
+    //create onChange function and pass this also as a prop in editor
+    onChange = editorState => {
+		this.setState({
+			editorState
+		});
+	};
+    //pass these as props in editor component
     render () {
         return (
             <div> 
                 <p>Work in progress</p>
-                <Editor editorState={this.state.editorState} /> 
+                <Editor editorState={this.state.editorState} 
+                        onChange = {this.onChange} /> 
+
             </div>
             
         );
