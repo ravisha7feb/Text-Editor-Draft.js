@@ -1,14 +1,40 @@
 .App {
   text-align: center;
+  background-color: powderblue;
+  margin: 20px;
 }
+.editorContainer .PageName {
 
+  margin: 30px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 50px;
+  color: rgb(7, 7, 49);
+}
 .editorContainer {
-  padding: 1em;
-  margin: 1em;
+  /*border: 2.5px rgb(228, 13, 66) solid;
+  justify-items: center;*/
+  padding: 1px;
+  margin: 5em;
   color:rgb(7, 7, 49);
 }
 
+.editorContainer > button {
+  border-radius: 5px;
+  border-width: 0;
+  justify-content:space-around ;
+  padding: 0;
+  margin: 5px;
+  height: 35px;
+  width: 35px;
+  font-size: 20px;
+}
+.editorContainer > button:hover{
+  color: aliceblue;
+  background-color: rgb(7, 7, 49);
+}
 .editors {
+  /*position: relative;
+  justify-self: center;*/
   border: 2.5px rgb(7, 7, 49) solid;
   padding: 1em;
   margin: 1em;

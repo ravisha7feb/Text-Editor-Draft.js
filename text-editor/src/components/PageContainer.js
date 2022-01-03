@@ -25,10 +25,25 @@ class PageContainer extends React.Component {
         return 'not-handled';
     }
 
+    
+    onBoldClick = () => {
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'BOLD'))
+    }
+    onUnderlineClick = () => {
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'UNDERLINE'));
+    }
+    onItalicClick = () => {
+        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'))
+    }
     //pass these as props in editor component
     render () {
         return (
+           
             <div className="editorContainer"> 
+                <div className="PageName" > Text Editor using Draft.js </div>
+                <button onClick={this.onBoldClick}><b>B</b></button>
+                <button onClick={this.onUnderlineClick}><u>U</u></button>
+                <button onClick={this.onItalicClick}><em>I</em></button>
                 <div className="editors">
                 <Editor editorState = {this.state.editorState} 
                         handleKeyCommand = {this.handleKeyCommand}
