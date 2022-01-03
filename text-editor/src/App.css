@@ -31,6 +31,7 @@
 .editorContainer > button:hover{
   color: aliceblue;
   background-color: rgb(7, 7, 49);
+  cursor: pointer;
 }
 .editors {
   /*position: relative;
