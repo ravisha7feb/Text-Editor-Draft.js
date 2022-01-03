@@ -40,7 +40,7 @@ class PageContainer extends React.Component {
         return (
            
             <div className="editorContainer"> 
-                <div className="PageName" > Text Editor using Draft.js </div>
+                <div className="PageName" > Text Editor using <a href="https://github.com/facebook/draft-js">Draft.js</a> </div>
                 <button onClick={this.onBoldClick}><b>B</b></button>
                 <button onClick={this.onUnderlineClick}><u>U</u></button>
                 <button onClick={this.onItalicClick}><em>I</em></button>
@@ -51,6 +51,7 @@ class PageContainer extends React.Component {
                         placeholder="Click here and start typing your text.."
                         /> 
                 </div>
+                <div className="save-file"> <button> Save File </button> </div>
             </div>
             
         );
