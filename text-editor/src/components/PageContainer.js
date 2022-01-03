@@ -1,5 +1,10 @@
 import React from "react";
-import { Editor, EditorState, RichUtils } from "draft-js";
+import { EditorState, RichUtils } from "draft-js";
+import Editor from 'draft-js-plugins-editor';
+import createHighlightPlugin from './plugins/highlightPlugin'
+import '../App.css'
+
+const highlightPlugin = createHighlightPlugin();
 
 class PageContainer extends React.Component {
     constructor(props) {
@@ -7,6 +12,9 @@ class PageContainer extends React.Component {
         this.state = {
 			editorState: EditorState.createEmpty() //sets its content to empty
 		};
+        this.plugins = [
+            highlightPlugin
+        ];
     }
     //create onChange function and pass this also as a prop in editor
     onChange = editorState => {
@@ -35,7 +43,19 @@ class PageContainer extends React.Component {
     onItalicClick = () => {
         this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, 'ITALIC'))
     }
+    onStrikeThroughClick = () => {
+    this.onChange(
+        RichUtils.toggleInlineStyle(this.state.editorState, "STRIKETHROUGH")
+    );
+    };
+
+    onHighlight = () => {
+    this.onChange(
+        RichUtils.toggleInlineStyle(this.state.editorState, "HIGHLIGHT")
+    );
+    };
     //pass these as props in editor component
+    //<span style={{ background: "yellow", padding: "0.3em" }}>H</span>
     render () {
         return (
            
@@ -44,11 +64,17 @@ class PageContainer extends React.Component {
                 <button onClick={this.onBoldClick}><b>B</b></button>
                 <button onClick={this.onUnderlineClick}><u>U</u></button>
                 <button onClick={this.onItalicClick}><em>I</em></button>
+                <button className="strikethrough" onClick={this.onStrikeThroughClick}>abc</button>
+
+                <button className="highlight-button" onClick={this.onHighlight} style={{background:"yellow"}}>
+                H
+                </button>
                 <div className="editors">
                 <Editor editorState = {this.state.editorState} 
                         handleKeyCommand = {this.handleKeyCommand}
                         onChange = {this.onChange} 
                         placeholder="Click here and start typing your text.."
+                        plugins={this.plugins}
                         /> 
                 </div>
                 <div className="save-file"> <button> Save File </button> </div>

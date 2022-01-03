@@ -34,6 +34,17 @@
   background-color: rgb(7, 7, 49);
   cursor: pointer;
 }
+.strikethrough {
+  text-decoration: line-through;
+  font-size: 1em;
+}
+/* these are not affecting highlighter div idk why*/
+/*.editorContainer > button.highlight-button{
+  background: "pink";
+}
+.editorContainer button.highlight-button:hover{
+  background: "pink";
+}*/
 .editors {
   /*position: relative;
   justify-self: center;*/
