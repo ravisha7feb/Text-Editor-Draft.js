@@ -1,4 +1,4 @@
-/*import { RichUtils } from "draft-js";
+import { RichUtils } from "draft-js";
 
 function highlighter() {
   return {
@@ -21,9 +21,9 @@ function highlighter() {
   };
 };
 
-export default highlighter;*/
+export default highlighter;
 
-
+/*
 import  { RichUtils } from 'draft-js';
 
 export default () => {
@@ -48,3 +48,4 @@ export default () => {
     },
   };
 };
+*/
