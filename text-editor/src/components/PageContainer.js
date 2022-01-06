@@ -1,8 +1,10 @@
 import React from "react";
 import { EditorState, RichUtils } from "draft-js";
+import 'draft-js/dist/Draft.css'
 import Editor from 'draft-js-plugins-editor';
 import createHighlightPlugin from './plugins/highlightPlugin'
 import '../App.css'
+import BlockStyleToolbar, { getBlockStyle } from "./blockStyles/BlockStyleToolbar";
 
 const highlightPlugin = createHighlightPlugin();
 
@@ -55,12 +57,23 @@ class PageContainer extends React.Component {
     );
     };
     //pass these as props in editor component
-    //<span style={{ background: "yellow", padding: "0.3em" }}>H</span>
+    
+    toggleBlockType = blockType => {
+        this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
+    };
+
     render () {
         return (
            
             <div className="editorContainer"> 
+
                 <div className="PageName" > Text Editor using <a href="https://github.com/facebook/draft-js">Draft.js</a> </div>
+
+                <BlockStyleToolbar
+            editorState={this.state.editorState}
+            onToggle={this.toggleBlockType}
+          />
+                
                 <button onClick={this.onBoldClick}><b>B</b></button>
                 <button onClick={this.onUnderlineClick}><u>U</u></button>
                 <button onClick={this.onItalicClick}><em>I</em></button>
@@ -69,12 +82,14 @@ class PageContainer extends React.Component {
                 <button className="highlight-button" onClick={this.onHighlight} style={{background:"yellow"}}>
                 H
                 </button>
+                
                 <div className="editors">
                 <Editor editorState = {this.state.editorState} 
                         handleKeyCommand = {this.handleKeyCommand}
                         onChange = {this.onChange} 
                         placeholder="Click here and start typing your text.."
                         plugins={this.plugins}
+                        blockStyleFn={getBlockStyle}
                         /> 
                 </div>
                 <div className="save-file"> <button> Save File </button> </div>
